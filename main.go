@@ -40,9 +40,15 @@ func main() {
 		},
 	})
 
+	bot.Command("bye", &slacker.CommandDefinition{
+		Handler: func(botCtx slacker.BotContext, request slacker.Request, response slacker.ResponseWriter) {
+			response.Reply("Bye man, have a nice day")
+		},
+	})
+
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-
+	
 	err := bot.Listen(ctx)
 	if err != nil {
 		log.Fatal(err)
