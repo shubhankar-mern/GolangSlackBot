@@ -22,8 +22,8 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	//os.Setenv("SLACK_BOT_TOKEN", "xoxb-6001447099542-6005180409685-SLjjEr1uRm2IvmqVMSFrGIrN")
-	//os.Setenv("SLACK_APP_TOKEN", "xapp-1-A0607V7HUJX-6031085918016-5f135689cd422193029bc08c09b989c0ce494035d94a3d924c4d0ad47d440ca5")
+	//os.Setenv("SLACK_BOT_TOKEN", "")
+	//os.Setenv("SLACK_APP_TOKEN", "")
 
 	bot := slacker.NewClient(os.Getenv("SLACK_BOT_TOKEN"), os.Getenv("SLACK_APP_TOKEN"))
 
@@ -32,6 +32,11 @@ func main() {
 	bot.Command("hii", &slacker.CommandDefinition{
 		Handler: func(botCtx slacker.BotContext, request slacker.Request, response slacker.ResponseWriter) {
 			response.Reply("Hello man, I am a Bot")
+		},
+	})
+	bot.Command("bye", &slacker.CommandDefinition{
+		Handler: func(botCtx slacker.BotContext, request slacker.Request, response slacker.ResponseWriter) {
+			response.Reply("bye man, I am a Bot")
 		},
 	})
 
